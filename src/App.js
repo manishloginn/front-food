@@ -15,6 +15,7 @@ import Signup from './routes/adminRoutes/Signup';
 import Cart from './routes/Cart';
 
 
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 
@@ -27,7 +28,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/getProduct");
+        const response = await axios.get(`${apiUrl}/getProduct`);
         // console.log(response.data)
         dispatch({ type: Action.ALLDATA, payload: response.data })
       } catch (error) {
