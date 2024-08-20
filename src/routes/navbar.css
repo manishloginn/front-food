@@ -1,0 +1,137 @@
+
+/* Ensure that Bootstrap styles are not overridden */
+.navbar {
+    margin-bottom: 20px; /* Space below the navbar */
+    display: flex;
+    justify-content: space-around;
+
+  }
+
+
+  /* Navbar container styling */
+  .navbar-brand {
+    font-weight: bold;
+    color: #333; /* Dark color for the brand name */
+  }
+  
+  
+  
+  .nav-link {
+    color: #555; /* Darker color for the links */
+    font-size: 16px;
+    font-weight: 500; /* Slightly bolder text */
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Color change on hover */
+  }
+  
+  /* Button styling */
+  button {
+    margin-left: 10px; /* Space between buttons */
+    padding: 10px 15px; /* Button padding */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+  }
+  
+  button:nth-of-type(1) {
+    background-color: #007bff; /* Blue background for login */
+    color: white;
+  }
+  
+  button:nth-of-type(2) {
+    background-color: #28a745; /* Green background for register */
+    color: white;
+  }
+  
+ 
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.span {
+    display: flex;
+    justify-content: left;
+    left: 5;
+    text-align: left;
+    justify-content: left;
+    cursor: pointer;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f0f0f06c;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.cartNumber {
+  position: fixed;
+  top: 0;
+  right: 5;
+  border: 2px solid #000000;
+  z-index: 1;
+  text-align: center;
+  border-radius: 50%;
+  width: 20px;
+  color: green;
+  font-weight: 1000px;
+  background-color: rgba(216, 221, 216, 0.836);
+}
