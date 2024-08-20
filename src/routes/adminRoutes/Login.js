@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
+const apiUrl = 'https://foodworld-nine.vercel.app';
+
+
 function AdminLogin() {
     const [data, setData] = useState({
         username: '',
@@ -13,7 +16,7 @@ function AdminLogin() {
 
     const formHandel = (e) => {
         e.preventDefault();
-        axios.post('/adminDone', { username: data.username, password: data.password })
+        axios.post(`${apiUrl}/adminDone`, { username: data.username, password: data.password })
             .then((res) => {
                 if (res.data.status === 200) {
                     navigate("/admin/Dashboard");

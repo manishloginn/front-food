@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Action } from '../store/action'
 import { Empty } from 'antd';
 
+const apiUrl = 'https://foodworld-nine.vercel.app/';
 
 function Productadd() {
 
@@ -26,7 +27,7 @@ function Productadd() {
 
   useEffect(() => {
     const fetchIsAuth = () => {
-      axios.get('/admin/Dashboard').then((res) => {
+      axios.get(`${apiUrl}admin/Dashboard`).then((res) => {
         // console.log(res.data)
         if (res.data.status === 401) {
           navigate('/admin/login')
@@ -40,9 +41,9 @@ function Productadd() {
   }, [navigate])
 
   useEffect(() => {
-    axios.get("/getRestrauntFood")
+    axios.get(`${apiUrl}getRestrauntFood`)
       .then((response) => {
-        // setUserData(response.data.data)
+        console.log(response.data.data)
         dispatch({ type: Action.AdminData, payload: response.data.data })
       })
       .catch((error) => console.log(error))
@@ -64,7 +65,7 @@ function Productadd() {
 
 
     try {
-      await axios.post('/uploadData', formdata)
+      await axios.post(`${apiUrl}uploadData`, formdata)
         .then((res) => {
           alert('Data uploaded successfully')
           setformToggle(false)
@@ -88,7 +89,7 @@ function Productadd() {
   }
 
   const handleLogout = () => {
-    axios.post('/adminLogout').then((res) => {
+    axios.post(`${apiUrl}adminLogout`).then((res) => {
       alert(res.data.message)
       navigate('/admin/login')
     }).catch((err) => alert(err.message))
@@ -105,7 +106,7 @@ function Productadd() {
     const deleteData = (item) => {
       console.log(item._id)
 
-      axios.post('/deleteItem', {id : item._id})
+      axios.post(`${apiUrl}deleteItem`, {id : item._id})
       .then(() => console.log('done'))
       .catch((err) => console.log(err))
 
@@ -170,7 +171,7 @@ function Productadd() {
                 </div>
                 <div className='lowersection' key={item.name}>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                    <img src={`http://localhost:5000/${item.image}`}></img>
+                    <img src={`https://foodworld-nine.vercel.app/${item.image}`}></img>
                   </div>
 
                   <div className='otherside'>

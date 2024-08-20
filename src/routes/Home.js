@@ -38,6 +38,8 @@ function Home() {
     }
   }
 
+ 
+
 
   // console.log(data)
 
@@ -46,7 +48,7 @@ function Home() {
     <>
      {/* <motion.div style={{ scaleX: scrollYProgress }} ></motion.div> */}
       <div className='homeproduct'>
-        {allData && allData.map((item, i) => {
+        {!allData ? <h1>loading</h1> :  allData.map((item, i) => {
           return (
             <>
               <div className='productItem' key={item._id}>
