@@ -7,22 +7,30 @@ const apiUrl = 'https://foodworld-nine.vercel.app';
 
 
 function AdminLogin() {
+
+    const [error, setError] = useState('');
     const [data, setData] = useState({
         username: '',
         password: '',
     });
 
+
     const navigate = useNavigate();
+
+    // ${apiUrl}
 
     const formHandel = (e) => {
         e.preventDefault();
-        axios.post(`${apiUrl}/adminDone`, { username: data.username, password: data.password })
+        axios.post(`http://localhost:5000/adminDone`, { username: data.username, password: data.password })
             .then((res) => {
-                if (res.data.status === 200) {
+                if (res.data.status === 200) {  
                     navigate("/admin/Dashboard");
+                } else {
+                    setError('Invalid login credentials');
                 }
             })
             .catch(err => {
+                setError('An error occurred. Please try again later.');
                 console.log(err);
             });
     }

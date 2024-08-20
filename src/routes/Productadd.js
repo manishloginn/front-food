@@ -27,7 +27,7 @@ function Productadd() {
 
   useEffect(() => {
     const fetchIsAuth = () => {
-      axios.get(`${apiUrl}admin/Dashboard`).then((res) => {
+      axios.get(`http://localhost:5000/admin/Dashboard`).then((res) => {
         // console.log(res.data)
         if (res.data.status === 401) {
           navigate('/admin/login')
@@ -38,12 +38,15 @@ function Productadd() {
     }
 
     fetchIsAuth()
-  }, [navigate])
+  }, [])
+
+  // ${apiUrl}
 
   useEffect(() => {
-    axios.get(`${apiUrl}getRestrauntFood`)
+    axios.get(`http://localhost:5000/getRestrauntFood`)
       .then((response) => {
         console.log(response.data.data)
+
         dispatch({ type: Action.AdminData, payload: response.data.data })
       })
       .catch((error) => console.log(error))
