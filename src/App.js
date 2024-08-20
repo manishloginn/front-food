@@ -15,7 +15,7 @@ import Signup from './routes/adminRoutes/Signup';
 import Cart from './routes/Cart';
 
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = 'https://foodworld-nine.vercel.app';
 
 
 
