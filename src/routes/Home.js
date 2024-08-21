@@ -5,7 +5,7 @@ import { Action } from '../store/action'
 import { useEffect, useState } from 'react'
 // import { motion, useScroll } from "framer-motion"
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
 
 function Home() {
 

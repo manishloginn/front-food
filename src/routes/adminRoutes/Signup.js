@@ -15,7 +15,7 @@ function Signup() {
 
     const SignupHandle = (e) => {
         e.preventDefault();
-        axios.post('/adminRegister', data) 
+        axios.post('https://foodworld-nine.vercel.app/adminRegister', data) 
             .then((res) => {
                 if (res.status === 201) {
                     setData({

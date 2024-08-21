@@ -21,7 +21,7 @@ function AdminLogin() {
 
     const formHandel = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/adminDone', { 
+        axios.post('https://foodworld-nine.vercel.app/adminDone', { 
             username: data.username, 
             password: data.password 
         }, {
