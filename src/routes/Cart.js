@@ -59,7 +59,7 @@ function Cart() {
                                             </div>
                                             <div className='otherside'>
                                                 <p className='name'>{item.name}</p>
-                                                <h5> ₹{parseFloat(item.price) * item.quantity}</h5>
+                                                <h5> ₹{item.price}</h5>
                                             </div>
                                         </div>
                                     </div>

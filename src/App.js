@@ -27,8 +27,9 @@ function App() {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      // ${apiUrl}
       try {
-        const response = await axios.get(`${apiUrl}/getProduct`);
+        const response = await axios.get(`http://localhost:5000/getProduct`);
         // console.log(response.data)
         dispatch({ type: Action.ALLDATA, payload: response.data })
       } catch (error) {

@@ -21,18 +21,24 @@ function AdminLogin() {
 
     const formHandel = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/adminDone`, { username: data.username, password: data.password })
-            .then((res) => {
-                if (res.data.status === 200) {  
-                    navigate("/admin/Dashboard");
-                } else {
-                    setError('Invalid login credentials');
-                }
-            })
-            .catch(err => {
-                setError('An error occurred. Please try again later.');
-                console.log(err);
-            });
+        axios.post('http://localhost:5000/adminDone', { 
+            username: data.username, 
+            password: data.password 
+        }, {
+            withCredentials: true // include this line to send cookies
+        })
+        .then((res) => {
+            console.log(res);
+            if (res.data.status === 200) {
+                navigate("/admin/Dashboard");
+            } else {
+                setError('Invalid login credentials');
+            }
+        })
+        .catch(err => {
+            setError('An error occurred. Please try again later.');
+            console.log(err);
+        });
     }
 
     const handelchange = (e) => {
