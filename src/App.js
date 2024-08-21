@@ -29,7 +29,7 @@ function App() {
     const fetchProducts = async () => {
       // ${apiUrl}
       try {
-        const response = await axios.get(`https://foodworld-git-main-manishloginns-projects.vercel.app/getProduct`);
+        const response = await axios.get(`https://foodworld-nine.vercel.app/getProduct`);
         // console.log(response.data)
         dispatch({ type: Action.ALLDATA, payload: response.data })
       } catch (error) {
