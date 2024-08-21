@@ -18,14 +18,14 @@ function AdminLogin() {
     const navigate = useNavigate();
 
     // ${apiUrl}
-
+    // , {
+    //     withCredentials: true // include this line to send cookies
+    // }
     const formHandel = (e) => {
         e.preventDefault();
         axios.post('https://foodworld-nine.vercel.app/adminDone', { 
             username: data.username, 
             password: data.password 
-        }, {
-            withCredentials: true // include this line to send cookies
         })
         .then((res) => {
             console.log(res);
