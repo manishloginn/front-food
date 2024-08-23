@@ -27,7 +27,7 @@ function Productadd() {
 
   useEffect(() => {
     const fetchIsAuth = () => {
-      axios.get(`http://localhost:5000/admin/Dashboard`).then((res) => {
+      axios.get(`https://foodworld-nine.vercel.app/admin/Dashboard`).then((res) => {
         console.log(res.data)
         if (res.data.status === 401) {
           navigate('/admin/login')
@@ -44,7 +44,7 @@ function Productadd() {
 
   useEffect(() => {
     const fetchadmindata = () => {
-      axios.get(`http://localhost:5000/getRestrauntFood`)
+      axios.get(`https://foodworld-nine.vercel.app/getRestrauntFood`)
       .then((response) => {
         console.log(response.data)
         dispatch({ type: Action.AdminData, payload: response.data.data })
