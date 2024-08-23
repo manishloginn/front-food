@@ -25,21 +25,10 @@ function Productadd() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  
-  const fetchadmindata = () => {
-    axios.get(`https://foodworld-nine.vercel.app/getRestrauntFood`)
-    .then((response) => {
-      console.log(response.data)
-
-      dispatch({ type: Action.AdminData, payload: response.data.data })
-    })
-    .catch((error) => console.log(error))
-  }
-
-
   useEffect(() => {
     const fetchIsAuth = () => {
-      axios.get(`https://foodworld-nine.vercel.app/admin/Dashboard`).then((res) => {
+      axios.get(`http://localhost:5000/admin/Dashboard`).then((res) => {
+        console.log(res.data)
         if (res.data.status === 401) {
           navigate('/admin/login')
           alert(res.data.message)
@@ -47,25 +36,27 @@ function Productadd() {
       })
         .catch((err) => console.log(err))
     }
+
     fetchIsAuth()
-      
-  fetchadmindata()
   }, [])
-
-
-
-
- 
 
   // ${apiUrl}
 
-  // useEffect(() => {
-    
+  useEffect(() => {
+    const fetchadmindata = () => {
+      axios.get(`http://localhost:5000/getRestrauntFood`)
+      .then((response) => {
+        console.log(response.data)
+        dispatch({ type: Action.AdminData, payload: response.data.data })
+      })
+      .catch((error) => console.log(error))
+    }
 
+    fetchadmindata()
     
-  // }, [])
+  }, [])
 
-  // console.log(userData)
+  console.log(userData)
   // console.log(data)
 
 
@@ -121,7 +112,6 @@ function Productadd() {
 
     const deleteData = (item) => {
       console.log(item._id)
-
       axios.post(`${apiUrl}deleteItem`, {id : item._id})
       .then(() => console.log('done'))
       .catch((err) => console.log(err))

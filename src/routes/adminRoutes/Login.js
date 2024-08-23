@@ -16,24 +16,25 @@ function AdminLogin() {
 
 
     const navigate = useNavigate();
+  // if (res.data.status === 200) {
+            //     navigate("/admin/Dashboard");
+            // } else {
+            //     setError('Invalid login credentials');
+            // }
 
-    // ${apiUrl}
-    // , {
-    //     withCredentials: true // include this line to send cookies
-    // }
     const formHandel = (e) => {
-        e.preventDefault();
-        axios.post('https://foodworld-nine.vercel.app/adminDone', { 
-            username: data.username, 
-            password: data.password 
-        })
+        e.preventDefault()
+        console.log('hit')
+        axios.post('http://localhost:5000/adminDone', { username: data.username, password: data.password }, { withCredentials: true } )
         .then((res) => {
             console.log(res);
-            if (res.data.status === 200) {
+            console.log('hitsuccessfulle')
+              if (res.data.status === 200) {
                 navigate("/admin/Dashboard");
             } else {
                 setError('Invalid login credentials');
             }
+          
         })
         .catch(err => {
             setError('An error occurred. Please try again later.');
