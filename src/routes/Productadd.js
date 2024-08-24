@@ -114,11 +114,9 @@ function Productadd() {
 
     const deleteData = (item) => {
       console.log(item._id)
-      axios.post(`${apiUrl}/deleteItem`, {id : item._id})
-      .then(() => console.log('done'))
-      .catch((err) => console.log(err))
-
-
+      // axios.post(`${apiUrl}/deleteItem`, {id : item._id})
+      // .then(() => console.log('done'))
+      // .catch((err) => console.log(err))
     }
 
   return (

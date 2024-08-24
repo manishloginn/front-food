@@ -8,6 +8,9 @@ import {  Empty, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 
 
+// const apiUrl = 'https://foodworld-nine.vercel.app';
+const apiUrl = 'http://localhost:5000';
+
 function Cart() {
     const cartData = useSelector((e) => e.cart);
     const totalPrice = useSelector((e) => e.totalprice);
@@ -50,7 +53,7 @@ function Cart() {
                                         </div>
                                         <div className='lowersection'>
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                                                <img src={`https://foodworld-nine.vercel.app/${item.image}`} alt={item.name}></img>
+                                                <img src={`${apiUrl}/${item.image}`} alt={item.name}></img>
                                                 <div className='upperbtndiv'>
                                                     <button onClick={() => decrement(item._id)}>-</button>
                                                     <span style={{ textAlign: "center", margin: 'auto', fontSize: "20px", width: "200px" }}>{item.quantity}</span>
