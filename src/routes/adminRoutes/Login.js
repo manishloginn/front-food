@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'http://localhost:5000';
 
 
 function AdminLogin() {
@@ -22,26 +23,33 @@ function AdminLogin() {
             //     setError('Invalid login credentials');
             // }
 
-    const formHandel = (e) => {
-        e.preventDefault()
-        console.log('hit')
-        axios.post('https://foodworld-nine.vercel.app/adminDone', { username: data.username, password: data.password }, { withCredentials: true } )
-        .then((res) => {
-            console.log(res);
-            console.log('hitsuccessfulle')
-              if (res.data.status === 200) {
-                navigate("/admin/Dashboard");
-            } else {
-                setError('Invalid login credentials');
+            const formHandel = async (e) => {
+                e.preventDefault()
+                console.log('hit')
+         
+                try { 
+                    const res = await  axios.post(`${apiUrl}/adminDone`, 
+                        { username: data.username, password: data.password },  
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            withCredentials: true // This is important
+                        })
+                        console.log(res)
+                        if (res.status === 200) {
+                            navigate("/admin/Dashboard");
+                        } else {
+                            setError('Invalid login credentials');
+                        }
+         
+                } catch (err) {
+                    setError('An error occurred. Please try again later.');
+                    console.log(err);
+                }
             }
-          
-        })
-        .catch(err => {
-            setError('An error occurred. Please try again later.');
-            console.log(err);
-        });
-    }
-
+         
+        
     const handelchange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     }

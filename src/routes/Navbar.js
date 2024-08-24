@@ -56,12 +56,14 @@ function Navbar() {
                        
                         <div onClick={() => navigate('/cart') } style={{cursor:"pointer", display:"flex"}}>
 
+                          
+                            <AddShoppingCartIcon style={{ fontSize: "40px", color:"grey" }} /> <Link className="nav-link" to="/cart">
                             {
                                 cartItem === 0? 
                                 "":<p className='cartNumber'>{cartItem}</p>
                             }
                             
-                            <AddShoppingCartIcon style={{ fontSize: "40px", color:"grey" }} /> <Link className="nav-link" to="/cart">Cart</Link>
+                            Cart</Link>
                         </div>
                     </div>
                 </nav>

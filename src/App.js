@@ -16,6 +16,7 @@ import Cart from './routes/Cart';
 
 
 const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'http://localhost:5000';
 
 
 
@@ -29,8 +30,8 @@ function App() {
     const fetchProducts = async () => {
       // ${apiUrl}
       try {
-        const response = await axios.get(`https://foodworld-nine.vercel.app/getProduct`);
-        // console.log(response.data)
+        const response = await axios.get(`${apiUrl}/getProduct`);
+        console.log(response.data)
         dispatch({ type: Action.ALLDATA, payload: response.data })
       } catch (error) {
         console.error('Error fetching products:', error);

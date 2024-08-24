@@ -3,6 +3,11 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
+
+const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'http://localhost:5000';
+
+
 function Signup() {
     const [data, setData] = useState({
         username: '',
@@ -15,7 +20,7 @@ function Signup() {
 
     const SignupHandle = (e) => {
         e.preventDefault();
-        axios.post('https://foodworld-nine.vercel.app/adminRegister', data) 
+        axios.post(`${apiUrl}/adminRegister`, data) 
             .then((res) => {
                 if (res.status === 201) {
                     setData({

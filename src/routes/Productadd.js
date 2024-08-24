@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Action } from '../store/action'
 import { Empty } from 'antd';
 
-const apiUrl = 'https://foodworld-nine.vercel.app/';
+
+const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'http://localhost:5000';
 
 function Productadd() {
 
@@ -25,26 +27,26 @@ function Productadd() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const fetchIsAuth = () => {
-      axios.get(`https://foodworld-nine.vercel.app/admin/Dashboard`).then((res) => {
-        console.log(res.data)
-        if (res.data.status === 401) {
-          navigate('/admin/login')
-          alert(res.data.message)
-        }
-      })
-        .catch((err) => console.log(err))
-    }
+  // useEffect(() => {
+  //   const fetchIsAuth = () => {
+  //     axios.get(`${apiUrl}/admin/Dashboard`).then((res) => {
+  //       console.log(res.data)
+  //       if (res.data.status === 401) {
+  //         navigate('/admin/login')
+  //         alert(res.data.message)
+  //       }
+  //     })
+  //       .catch((err) => console.log(err))
+  //   }
 
-    fetchIsAuth()
-  }, [])
+  //   fetchIsAuth()
+  // }, [])
 
   // ${apiUrl}
 
   useEffect(() => {
     const fetchadmindata = () => {
-      axios.get(`https://foodworld-nine.vercel.app/getRestrauntFood`)
+      axios.get(`${apiUrl}/getRestrauntFood`)
       .then((response) => {
         console.log(response.data)
         dispatch({ type: Action.AdminData, payload: response.data.data })
@@ -72,7 +74,7 @@ function Productadd() {
 
 
     try {
-      await axios.post(`${apiUrl}uploadData`, formdata)
+      await axios.post(`${apiUrl}/uploadData`, formdata)
         .then((res) => {
           alert('Data uploaded successfully')
           setformToggle(false)
@@ -96,7 +98,7 @@ function Productadd() {
   }
 
   const handleLogout = () => {
-    axios.post(`https://foodworld-nine.vercel.app/adminLogout`).then((res) => {
+    axios.post(`${apiUrl}/adminLogout`).then((res) => {
       alert(res.data.message)
       navigate('/admin/login')
     }).catch((err) => alert(err.message))
@@ -112,7 +114,7 @@ function Productadd() {
 
     const deleteData = (item) => {
       console.log(item._id)
-      axios.post(`${apiUrl}deleteItem`, {id : item._id})
+      axios.post(`${apiUrl}/deleteItem`, {id : item._id})
       .then(() => console.log('done'))
       .catch((err) => console.log(err))
 
