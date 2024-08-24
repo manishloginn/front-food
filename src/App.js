@@ -15,8 +15,8 @@ import Signup from './routes/adminRoutes/Signup';
 import Cart from './routes/Cart';
 
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
-// const apiUrl = 'http://localhost:5000';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
+const apiUrl = 'http://localhost:5000';
 
 
 

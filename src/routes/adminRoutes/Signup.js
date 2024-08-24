@@ -4,8 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
-// const apiUrl = 'http://localhost:5000';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
+const apiUrl = 'http://localhost:5000';
+
 
 function Signup() {
     const [data, setData] = useState({
