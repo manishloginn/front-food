@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router'
+import {  Outlet, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import "./navbar.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import SensorOccupiedTwoToneIcon from '@mui/icons-material/SensorOccupiedTwoTone';
 import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
-import useSelection from 'antd/es/table/hooks/useSelection';
 import { useSelector } from 'react-redux';
 
 

@@ -10,6 +10,7 @@ import { Empty } from 'antd';
 const apiUrl = 'https://foodworld-nine.vercel.app';
 // const apiUrl = 'http://localhost:5000';
 
+
 function Productadd() {
 
   const [formToggle, setformToggle] = useState(false)
@@ -179,7 +180,7 @@ function Productadd() {
                 </div>
                 <div className='lowersection' key={item.name}>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                    <img src={`https://foodworld-nine.vercel.app/${item.image}`}></img>
+                    <img src={`${apiUrl}/${item.image}`}></img>
                   </div>
 
                   <div className='otherside'>
