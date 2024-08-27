@@ -7,8 +7,8 @@ import { Action } from '../store/action'
 import { Empty } from 'antd';
 
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
 // const apiUrl = 'http://localhost:5000';
+const apiUrl = 'https://foodworld-nine.vercel.app';
 
 function Productadd() {
 
