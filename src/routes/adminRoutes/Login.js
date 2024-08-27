@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-
-const apiUrl = 'https://foodworld-nine.vercel.app';
-// const apiUrl = 'http://localhost:5000';
+import { useSelector } from 'react-redux';
+import Cookies from "js-cookie";
 
 
 function AdminLogin() {
+
+    const apiUrl = useSelector((e) => e.url)
 
     const [error, setError] = useState('');
     const [data, setData] = useState({
@@ -17,12 +18,7 @@ function AdminLogin() {
 
 
     const navigate = useNavigate();
-  // if (res.data.status === 200) {
-            //     navigate("/admin/Dashboard");
-            // } else {
-            //     setError('Invalid login credentials');
-            // }
-
+ 
             const formHandel = async  (e) => {
                 e.preventDefault()
                 console.log('hit')
@@ -36,7 +32,11 @@ function AdminLogin() {
                             },
                             withCredentials: true // This is important
                         })
-                        console.log(res)
+
+                        let respo = Cookies.get()
+                        console.log(respo)
+
+                        console.log(res.data)
                         if (res.status === 200) {
                             navigate("/admin/Dashboard");
                         } else {

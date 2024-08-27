@@ -8,14 +8,14 @@ import About from './routes/About';
 import Admin from './routes/Admin';
 import Productadd from './routes/Productadd';
 import axios from 'axios';
-import {  useDispatch } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { Action } from './store/action';
 import AdminLogin from './routes/adminRoutes/Login';
 import Signup from './routes/adminRoutes/Signup';
 import Cart from './routes/Cart';
 
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
 // const apiUrl = 'http://localhost:5000';
 
 
@@ -24,6 +24,8 @@ function App() {
 
 
   const dispatch = useDispatch();
+
+  const apiUrl = useSelector((e) => e.url)
 
 
   useEffect(() => {

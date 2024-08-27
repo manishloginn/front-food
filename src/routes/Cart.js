@@ -8,13 +8,14 @@ import {  Empty, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 
 
-const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
 // const apiUrl = 'http://localhost:5000';
 
 function Cart() {
     const cartData = useSelector((e) => e.cart);
     const totalPrice = useSelector((e) => e.totalprice);
     const dispatch = useDispatch();
+    const apiUrl = useSelector((e) => e.url)
 
     const increment = (itemId) => {
         dispatch({ type: Action.INCREMENT_QUANTITY, payload: itemId });

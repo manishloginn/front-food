@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { useSelector } from 'react-redux';
 
-
-const apiUrl = 'https://foodworld-nine.vercel.app';
-// const apiUrl = 'http://localhost:5000';
 
 
 function Signup() {
+
+    const apiUrl = useSelector((e) => e.url)
+
     const [data, setData] = useState({
         username: '',
         password: '',

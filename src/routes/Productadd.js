@@ -5,16 +5,18 @@ import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { Action } from '../store/action'
 import { Empty } from 'antd';
+import Cookies from "js-cookie";
 
 
 // const apiUrl = 'http://localhost:5000';
-const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'https://foodworld-nine.vercel.app';
 
 function Productadd() {
 
   const [formToggle, setformToggle] = useState(false)
   // const [userData, setUserData] = useState()
   const userData = useSelector((e) => e.AdminData)
+  const apiUrl = useSelector((e) => e.url)
 
   const [product, SetProduct] = useState({
     name: '',
@@ -28,6 +30,9 @@ function Productadd() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    let respo = Cookies.get("userDetail")
+    console.log(respo)
+
     const fetchadmindata = async () => {
      await axios.get(`${apiUrl}/getRestrauntFood`, { withCredentials: true })
       .then((response) => {
