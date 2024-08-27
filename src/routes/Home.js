@@ -2,6 +2,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import "./home.css"
 import { Action } from '../store/action'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react'
 // import { motion, useScroll } from "framer-motion"
 
@@ -11,21 +13,13 @@ const apiUrl = 'https://foodworld-nine.vercel.app';
 function Home() {
 
 
-  
+
   // const [data, setdata] = useState([])
 
   const allData = useSelector((e) => e.data)
   const cartData = useSelector((e) => e.cart)
   // const totalPrice = useSelector((e) => e.totalprice)
   const dispatch = useDispatch()
-  // const { scrollYProgress } = useScroll();
-
-  // useEffect(() => {
-
-  //   setdata(allData)
-
-
-  // }, [])
 
   // setdata(allData)
   const haldelcart = (item) => {
@@ -39,39 +33,45 @@ function Home() {
     }
   }
 
- 
+
+
 
 
   // console.log(data)
 
 
+
   return (
     <>
-     {/* <motion.div style={{ scaleX: scrollYProgress }} ></motion.div> */}
+      {/* <motion.div style={{ scaleX: scrollYProgress }} ></motion.div> */}
       <div className='homeproduct'>
-        {!allData ? <h1>loading</h1> :  allData.map((item, i) => {
-          return (
-            <>
-              <div className='productItem' key={item._id}>
-                <div className='restrname' key={item.restrauntName}>
-                  <p>By {item.restrauntName}</p>
-                  <hr />
-                </div>
-                <div className='lowersection' key={item.name}>
-                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                    <img src={`${apiUrl}/${item.image}`}></img>
-                    <button onClick={() => haldelcart(item)} style={{ marginTop: "-20px", border: "1px solid grey", width: "100px", background: "white", color: "green", fontWeight: "800", fontSize: "20px" }}>ADD</button>
+        {(!allData || allData.length === 0) ?
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
+          : allData.map((item, i) => {
+            return (
+              <>
+                <div className='productItem' key={item._id}>
+                  <div className='restrname' key={item.restrauntName}>
+                    <p>By {item.restrauntName}</p>
+                    <hr />
                   </div>
+                  <div className='lowersection' key={item.name}>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                      <img src={`${apiUrl}/${item.image}`}></img>
+                      <button onClick={() => haldelcart(item)} style={{ marginTop: "-20px", border: "1px solid grey", width: "100px", background: "white", color: "green", fontWeight: "800", fontSize: "20px" }}>ADD</button>
+                    </div>
 
-                  <div className='otherside'>
-                    <p className='name'>{item.name}</p>
-                    <h5> ₹{item.price}</h5>
+                    <div className='otherside'>
+                      <p className='name'>{item.name}</p>
+                      <h5> ₹{item.price}</h5>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          )
-        })}
+              </>
+            )
+          })}
       </div>
     </>
   )

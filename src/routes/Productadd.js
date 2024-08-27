@@ -27,35 +27,16 @@ function Productadd() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const fetchIsAuth = () => {
-  //     axios.get(`${apiUrl}/admin/Dashboard`).then((res) => {
-  //       console.log(res.data)
-  //       if (res.data.status === 401) {
-  //         navigate('/admin/login')
-  //         alert(res.data.message)
-  //       }
-  //     })
-  //       .catch((err) => console.log(err))
-  //   }
-
-  //   fetchIsAuth()
-  // }, [])
-
-  // ${apiUrl}
-
   useEffect(() => {
-    const fetchadmindata = () => {
-      axios.get(`${apiUrl}/getRestrauntFood`)
+    const fetchadmindata = async () => {
+     await axios.get(`${apiUrl}/getRestrauntFood`, { withCredentials: true })
       .then((response) => {
         console.log(response.data)
         dispatch({ type: Action.AdminData, payload: response.data.data })
       })
       .catch((error) => console.log(error))
-    }
-
+    }  
     fetchadmindata()
-    
   }, [])
 
   console.log(userData)
@@ -74,10 +55,11 @@ function Productadd() {
 
 
     try {
-      await axios.post(`${apiUrl}/uploadData`, formdata)
+      await axios.post(`${apiUrl}/uploadData`, formdata, { withCredentials: true })
         .then((res) => {
           alert('Data uploaded successfully')
           setformToggle(false)
+          window.location.reload()
         })
     } catch (error) {
       console.log('Error while uploading data', error)
@@ -113,10 +95,12 @@ function Productadd() {
     };
 
     const deleteData = (item) => {
-      console.log(item._id)
-      // axios.post(`${apiUrl}/deleteItem`, {id : item._id})
-      // .then(() => console.log('done'))
-      // .catch((err) => console.log(err))
+      console.log(item)
+      axios.post(`${apiUrl}/deleteItem`, {senderDetail : item, id:item._id}, {withCredentials:true})
+      .then(() => 
+        window.location.reload()
+      )
+      .catch((err) => console.log(err))
     }
 
   return (

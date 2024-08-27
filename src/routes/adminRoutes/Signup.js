@@ -20,7 +20,7 @@ function Signup() {
 
     const SignupHandle = (e) => {
         e.preventDefault();
-        axios.post(`${apiUrl}/adminRegister`, data) 
+        axios.post(`${apiUrl}/adminRegister`, data, {withCredentials:true}) 
             .then((res) => {
                 if (res.status === 201) {
                     setData({

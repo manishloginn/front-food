@@ -23,12 +23,12 @@ function AdminLogin() {
             //     setError('Invalid login credentials');
             // }
 
-            const formHandel = async (e) => {
+            const formHandel = async  (e) => {
                 e.preventDefault()
                 console.log('hit')
          
                 try { 
-                    const res = await  axios.post(`${apiUrl}/adminDone`, 
+                    const res = await axios.post(`${apiUrl}/adminDone`, 
                         { username: data.username, password: data.password },  
                         {
                             headers: {
