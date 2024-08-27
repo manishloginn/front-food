@@ -7,8 +7,8 @@ import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react'
 // import { motion, useScroll } from "framer-motion"
 
-// const apiUrl = 'https://foodworld-nine.vercel.app';
-const apiUrl = 'http://localhost:5000';
+const apiUrl = 'https://foodworld-nine.vercel.app';
+// const apiUrl = 'http://localhost:5000';
 
 function Home() {
 
