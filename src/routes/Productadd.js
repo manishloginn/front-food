@@ -30,17 +30,18 @@ function Productadd() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    let respo = Cookies.get("userDetail")
-    console.log(respo)
+
+    // console.log(respo)
 
     const fetchadmindata = async () => {
-     await axios.get(`${apiUrl}/getRestrauntFood`, { withCredentials: true })
-      .then((response) => {
-        console.log(response.data)
-        dispatch({ type: Action.AdminData, payload: response.data.data })
-      })
-      .catch((error) => console.log(error))
-    }  
+      let respo = Cookies.get("userDetail")
+      await axios.get(`${apiUrl}/getRestrauntFood`, { withCredentials: true })
+        .then((response) => {
+          console.log(response.data.userdetail)
+          dispatch({ type: Action.AdminData, payload: response.data.data })
+        })
+        .catch((error) => console.log(error))
+    }
     fetchadmindata()
   }, [])
 
@@ -62,10 +63,11 @@ function Productadd() {
     try {
       await axios.post(`${apiUrl}/uploadData`, formdata, { withCredentials: true })
         .then((res) => {
-          alert('Data uploaded successfully')
-          setformToggle(false)
-          window.location.reload()
-        })
+          alert('Data uploaded successfully');
+          setformToggle(false);
+          window.location.reload();
+        });
+
     } catch (error) {
       console.log('Error while uploading data', error)
     }
@@ -92,21 +94,21 @@ function Productadd() {
   }
 
   const TruncatedText = ({ text, wordLimit }) => {
-      const words = text.split(" ");
-      if (words.length > wordLimit) {
-        return words.slice(0, wordLimit).join(" ") + '...';
-      }
-      return text;
-    };
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + '...';
+    }
+    return text;
+  };
 
-    const deleteData = (item) => {
-      console.log(item)
-      axios.post(`${apiUrl}/deleteItem`, {senderDetail : item, id:item._id}, {withCredentials:true})
-      .then(() => 
+  const deleteData = (item) => {
+    console.log(item)
+    axios.post(`${apiUrl}/deleteItem`, { senderDetail: item, id: item._id }, { withCredentials: true })
+      .then(() =>
         window.location.reload()
       )
       .catch((err) => console.log(err))
-    }
+  }
 
   return (
 
@@ -173,7 +175,7 @@ function Productadd() {
                     <p className='name'>{item.name}</p>
                     <TruncatedText text={item.description} wordLimit={15} />
                     {/* <p  className='description'>{item.description}</p> */}
-                    <h5 style={{marginTop:"10px"}}> ₹{item.price}</h5>
+                    <h5 style={{ marginTop: "10px" }}> ₹{item.price}</h5>
                   </div>
                   <div>
                     <button onClick={() => deleteData(item)} className='deleteitem' >delete</button>
