@@ -6,7 +6,7 @@ const initialState = {
     AdminData: null,
     cart: [],
     totalprice: 0,
-    url:'https://food-app-backend-psi.vercel.app/',
+    url:'https://food-app-backend-psi.vercel.app',
     //   url:'http://localhost:5050'
 };
 
