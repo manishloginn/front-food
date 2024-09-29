@@ -6,8 +6,8 @@ const initialState = {
     AdminData: null,
     cart: [],
     totalprice: 0,
-    url:'https://foodworld-nine.vercel.app',
-    //   url:'http://localhost:5000'
+    url:'https://food-app-backend-psi.vercel.app/',
+    //   url:'http://localhost:5050'
 };
 
 export const reducer = (state = initialState, action) => {

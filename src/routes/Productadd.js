@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { Action } from '../store/action'
 import { Empty } from 'antd';
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 
 // const apiUrl = 'http://localhost:5000';
@@ -34,7 +34,7 @@ function Productadd() {
     // console.log(respo)
 
     const fetchadmindata = async () => {
-      let respo = Cookies.get("userDetail")
+      // let respo = Cookies.get("userDetail")
       await axios.get(`${apiUrl}/getRestrauntFood`, { withCredentials: true })
         .then((response) => {
           console.log(response.data.userdetail)
@@ -168,9 +168,8 @@ function Productadd() {
                 </div>
                 <div className='lowersection' key={item.name}>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                    <img src={`${apiUrl}/${item.image}`}></img>
+                    <img src={`${item.image}`} alt={item.image}></img>
                   </div>
-
                   <div className='otherside'>
                     <p className='name'>{item.name}</p>
                     <TruncatedText text={item.description} wordLimit={15} />

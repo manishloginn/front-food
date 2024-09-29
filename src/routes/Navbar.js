@@ -23,7 +23,6 @@ function Navbar() {
 
 
     return (
-
         <>
           <div className="navbar navbar-expand-lg navbar-light bg-light">
                 <nav style={{width:"90vw", margin:"auto"}} className='navbar navbar-expand-lg navbar-light bg-light' >
